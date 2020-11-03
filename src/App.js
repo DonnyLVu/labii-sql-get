@@ -1,25 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import fetch from 'superagent';
+import AppRender from './AppRender.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  
+  state = {
+      rangerData: '',
+  }
+
+
+  componentDidMount = async () => {
+    const response = await fetch.get(`https://dry-castle-57746.herokuapp.com/rangers`);
+      this.setState({ rangerData: response.results });
+  }
+
+
+  render() {
+    return (
+      <div>
+              {
+          <div className="rangerList"> 
+          {
+          this.props.rangerData.map(ranger => 
+          { return (
+          <AppRender 
+          uniqueId={ranger.id}
+          rangerName={ranger.name} 
+          ranger_color={ranger.ranger_color} 
+          favorite={ranger.favorite}
+          order_appeared={ranger.order_appeared}
+          ownerId={ranger.owner_id} />
+          )
+          })
+          }
+          </div>
+      }
+
+      </div>
+    )
+  }
 }
-
-export default App;
