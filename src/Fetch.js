@@ -11,9 +11,9 @@ export async function fetchRangers() {
     }
 }
 
-export async function fetchRanger(newCreateRanger) {
+export async function fetchRanger(someId) {
     try {
-        const response = await fetch.get(`${URL}rangers/${newCreateRanger}`);
+        const response = await fetch.get(`${URL}rangers/${someId}`);
         return response.body;
     } catch(err) {
         throw err;

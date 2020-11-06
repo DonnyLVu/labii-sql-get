@@ -8,8 +8,12 @@ const userLocal = {
 export default class Create extends Component {
 
     state = {
+        name: '',
+        orderAppeared: 1,
+        newFavorite: false,
         colors: [],
-        favorite: false,
+        colorId: 1,
+        newRangerColor: 1,
     }
 
     componentDidMount = async () => {
@@ -22,13 +26,13 @@ export default class Create extends Component {
         e.preventDefault();
 
         const newRangers = {
-            newName: this.state.name,
-            newRangerColor: this.state.ranger_color,
-            newFavorite: this.state.favorite,
-            newOrderAppeared: this.state.order_appeared,
+            name: this.state.newName,
+            ranger_color_id: this.state.newRangerColor,
+            favorite: this.state.newFavorite,
+            order_appeared: this.state.newOrderAppeared,
             owner_id: userLocal.userId
         };
-
+        console.log(newRangers)
         await fetch
             .post('https://dry-castle-57746.herokuapp.com/rangers')
             .send(newRangers);
@@ -47,17 +51,17 @@ export default class Create extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         NAME
-                        <input onChange={e => this.setState({ newName: e.target.value })} type="string" />
+                        <input onChange={e => this.setState({ newName: e.target.value })} type="text" />
                     </label>
                     <label>
-                        ORDERED WHERE IT APPEARED?
+                        ORDERED OF WHEN IT APPEARED?
                         <input onChange={e => this.setState({ newOrderAppeared: e.target.value })} type="number"/>
                     </label>
                     <label>
                         FAVORITE??
                         <select onChange={e => this.setState({ newFavorite: e.target.value })} >
-                            <option value={false} > False</option>
-                            <option value={true} > True</option>
+                            <option value={false} > False </option>
+                            <option value={true} > True </option>
                         </select>
                     </label>
                     <label>
