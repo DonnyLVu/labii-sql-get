@@ -1,38 +1,41 @@
+import React, { Component } from 'react'
 import './App.css';
-import React from 'react';
-import fetch from 'superagent';
-// import AppRender from './AppRender.js';
+import Header from './Header.js';
+import RangerRender from './RangerRender.js';
+import CreatePage from './CreatePage.js';
+import Home from './Home.js';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
-export default class App extends React.Component {
-  
-  state = {
-    rangerData: [],
-    ranger_color:'',
-    favorite:'',
-    name:'',
-    order_appeared:'',
-  }
+// import { Link } from 'react-router-dom';
 
-
-  componentDidMount = async () => {
-    const response = await fetch.get(`https://dry-castle-57746.herokuapp.com/rangers`);
-    console.log(response.body);
-      this.setState({ rangerData: response.body });
-  }
-
-  
+export default class App extends Component {
   render() {
     return (
-      <div className='rangerList'>
-        {
-        this.state.rangerData.map(ranger => 
-          <div>
-          <p className="name">Name: {ranger.name}</p>
-          <p className="rangerColor">Ranger Color: {ranger.ranger_color}</p>
-          <p className="favorite">Favorite Ranger?: {ranger.favorite.toString()}</p>
-          <p className="orderAppeared">Order of Appearance: {ranger.order_appeared}</p>
-          </div>
-        )})
+      <div>
+        <Router>
+          <Header/>
+          <Switch>
+            <Route
+              path="/home"
+              exact
+              render={(routerProps) => <Home {...routerProps} />}
+            />
+            <Route
+              path="/createpage"
+              exact
+              render={(routerProps) => <CreatePage {...routerProps} />}
+            />
+            <Route
+              path="/rangerrender"
+              exact
+              render={(routerProps) => <RangerRender {...routerProps} />}
+            />
+          </Switch>
+        </Router>
       </div>
     )
   }
