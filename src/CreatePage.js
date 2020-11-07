@@ -37,7 +37,7 @@ export default class Create extends Component {
             .post('https://dry-castle-57746.herokuapp.com/rangers')
             .send(newRangers);
 
-        this.props.history.push('/');
+        this.props.history.push('/rangerrender');
     }
 
     handleChange = (e) => {
@@ -55,7 +55,7 @@ export default class Create extends Component {
                     </label>
                     <label>
                         ORDERED OF WHEN IT APPEARED?
-                        <input onChange={e => this.setState({ newOrderAppeared: e.target.value })} type="number"/>
+                        <input onChange={e => this.setState({ newOrderAppeared: e.target.value })} type="number" />
                     </label>
                     <label>
                         FAVORITE??

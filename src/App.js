@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header.js';
 import RangerRender from './RangerRender.js';
 import CreatePage from './CreatePage.js';
+import DetailPage from './DetailPage.js';
 import Home from './Home.js';
 import {
   BrowserRouter as Router,
@@ -17,7 +18,7 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-          <Header/>
+          <Header />
           <Switch>
             <Route
               path="/home"
@@ -34,6 +35,11 @@ export default class App extends Component {
               exact
               render={(routerProps) => <RangerRender {...routerProps} />}
             />
+            <Route
+              path="/detail/:id"
+              exact
+              render={(routerProps) => <DetailPage {...routerProps} />}
+            />
           </Switch>
         </Router>
       </div>
@@ -42,7 +48,7 @@ export default class App extends Component {
 }
 
 // export default class App extends React.Component {
-  
+
 //   state = {
 //     rangerData: [],
 //   }
