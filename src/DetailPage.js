@@ -5,6 +5,7 @@ import {
     fetchRanger,
     deleteRangers,
 } from './Fetch.js';
+import './App.css';
 
 
 const userLocal = {

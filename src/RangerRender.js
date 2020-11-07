@@ -29,11 +29,11 @@ export default class RangerRender extends React.Component {
           this.state.rangerData.map(ranger =>
             <div>
               <Link to={`/detail/${ranger.id}`}>
-                <div>
-                  <p className="name">Name: {ranger.name}</p>
-                  <p className="rangerColor">Ranger Color: {ranger.colors}</p>
-                  <p className="favorite">Favorite Ranger?: {ranger.favorite.toString()}</p>
-                  <p className="orderAppeared">Order of Appearance: {ranger.order_appeared}</p>
+                <div className="container">
+                  <div className="card">Name: {ranger.name}</div>
+                  <div className="card">Ranger Color: {ranger.colors}</div>
+                  <div className="card">Favorite Ranger?: {ranger.favorite.toString()}</div>
+                  <div className="card">Order of Appearance: {ranger.order_appeared}</div>
                 </div>
               </Link>
             </div>
