@@ -15,7 +15,7 @@ export default class Header extends Component {
                         <Link to="/createpage">Create</Link>
                     </li>
                     <li>
-                        <Link to="/rangerrender">render</Link>
+                        <Link to="/rangerrender">List Page</Link>
                     </li>
                 </ul>
             </div>
